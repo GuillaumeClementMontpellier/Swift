@@ -15,11 +15,12 @@ struct PubList: View {
         List(self.pubs.publications){pub in
             PubPreview(pub: pub)
         }
+        
     }
 }
 
 struct PubList_Previews: PreviewProvider {
     static var previews: some View {
-        PubList(pubs:PublicationSet(pubs: [Publication(titre: "Pub1", contenu: "Lorem Ipsum", note: 500), Publication(titre: "Pub2", contenu: "Lorem Ipsum", note: 200)]))
+        PubList(pubs:PublicationSet(pubs: [Publication(titre: "Pub1", contenu: "Lorem Ipsum", note: 500), Publication(titre: "Pub2", contenu: "Lorem Ipsum", note: 200), Publication(titre: "Pub2", contenu: "Lorem Ipsum", note: 200), Publication(titre: "Pub2", contenu: "Lorem Ipsum", note: 200), Publication(titre: "Pub2", contenu: "Lorem Ipsum", note: 200)]))
     }
 }

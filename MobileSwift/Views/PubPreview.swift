@@ -12,11 +12,19 @@ struct PubPreview: View {
     var pub : Publication
     
     var body: some View {
-        VStack {
+        HStack{
             Text(pub.titre)
+            Spacer()
             Text("\(pub.note)")
+            VStack{
+                Button(action: {print("plus to \(self.pub.titre)")}){
+                    Image(systemName: "plus")
+                }
+                Button(action: {print("minus to \(self.pub.titre)")}){
+                    Image(systemName: "minus")
+                }
+            }.buttonStyle(BorderlessButtonStyle())
         }
-        
     }
 }
 
