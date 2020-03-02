@@ -24,8 +24,8 @@ struct HomeView: View {
         self.pubSet = PublicationSet(pubs: pubs)
         
         let discs: [Discussion] = [
-            Discussion(titre: "Pub1", contenu: "Lorem Ipsum", note: 500, auth: "Pinou"),
-            Discussion(titre: "Pub2", contenu: "Lorem Ipsum", note: 200, auth: "Pinou")
+            Discussion(titre: "D1", contenu: "Lorem Ipsum", note: 550, auth: "Pinou"),
+            Discussion(titre: "D2", contenu: "Lorem Ipsum", note: 20, auth: "Pinou")
         ]
         
         self.disSet = DiscussionSet(disc: discs)
@@ -49,12 +49,12 @@ struct HomeView: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
                 .background(!isPublication ? Color.orange : Color.white)
-                .foregroundColor(!isPublication ? Color.orange : Color.blue)
+                .foregroundColor(!isPublication ? Color.white : Color.blue)
                 .border(isPublication ? Color.blue: Color.orange, width: 3)
-            
+                
             }
-            
-            //isPublication ? DisList(discs: self.disSet) : PubList(pubs : self.pubSet)
+            !isPublication ? DisList(discs: self.disSet) : nil
+            isPublication ? PubList(pubs: self.pubSet) : nil
             
         }
         .navigationBarItems(

@@ -21,7 +21,6 @@ struct RegisterView: View {
     
     var body: some View {
         VStack{
-            
             error ?
                 Text("Error")
                     .padding()

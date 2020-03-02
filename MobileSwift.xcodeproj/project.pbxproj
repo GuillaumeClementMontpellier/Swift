@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C729EB53240D3977002CC391 /* DiscDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C729EB52240D3977002CC391 /* DiscDetail.swift */; };
 		C764BCC024094EB700B76936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764BCBF24094EB700B76936 /* AppDelegate.swift */; };
 		C764BCC224094EB700B76936 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764BCC124094EB700B76936 /* SceneDelegate.swift */; };
 		C764BCC424094EB700B76936 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764BCC324094EB700B76936 /* ContentView.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C729EB52240D3977002CC391 /* DiscDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscDetail.swift; sourceTree = "<group>"; };
 		C764BCBC24094EB700B76936 /* MobileSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C764BCBF24094EB700B76936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C764BCC124094EB700B76936 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C729EB54240D3A3D002CC391 /* Commentaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Commentaire;
+			sourceTree = "<group>";
+		};
+		C729EB55240D3A45002CC391 /* Reponse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reponse;
+			sourceTree = "<group>";
+		};
 		C764BCB324094EB700B76936 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +204,8 @@
 		C764BCF2240963D500B76936 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C729EB55240D3A45002CC391 /* Reponse */,
+				C729EB54240D3A3D002CC391 /* Commentaire */,
 				C7C12401240D112B00918C87 /* Discussions */,
 				C7C123FE240D0ACE00918C87 /* Util */,
 				C7C123F4240CEF7700918C87 /* Auth */,
@@ -230,6 +248,7 @@
 			children = (
 				C7C12402240D14DC00918C87 /* DisList.swift */,
 				C7C12408240D15E800918C87 /* DisPreview.swift */,
+				C729EB52240D3977002CC391 /* DiscDetail.swift */,
 			);
 			path = Discussions;
 			sourceTree = "<group>";
@@ -368,6 +387,7 @@
 				C7C12400240D0ADE00918C87 /* SearchBar.swift in Sources */,
 				C7C123F6240CF93C00918C87 /* RegisterView.swift in Sources */,
 				C764BCFA2409656800B76936 /* Publication.swift in Sources */,
+				C729EB53240D3977002CC391 /* DiscDetail.swift in Sources */,
 				C7C123F8240CFA2200918C87 /* HomeView.swift in Sources */,
 				C7C12405240D151300918C87 /* DiscussionSet.swift in Sources */,
 				C7C12403240D14DC00918C87 /* DisList.swift in Sources */,

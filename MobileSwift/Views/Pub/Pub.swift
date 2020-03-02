@@ -8,14 +8,21 @@
 
 import SwiftUI
 
-struct Pub: View {
+struct PubDetail: View {
+    
+    var pub : Publication
+    
+    init(pub : Publication){
+        self.pub = pub
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct Pub_Previews: PreviewProvider {
+struct PubDetail_Previews: PreviewProvider {
     static var previews: some View {
-        Pub()
+        PubDetail(pub: Publication(titre: "Titre", contenu: "Contenu", note: 500, auth: "author"))
     }
 }

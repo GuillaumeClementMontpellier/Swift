@@ -1,5 +1,5 @@
 //
-//  DisPreview.swift
+//  DiscDetail.swift
 //  MobileSwift
 //
 //  Created by user164554 on 3/2/20.
@@ -8,28 +8,27 @@
 
 import SwiftUI
 
-struct DisPreview: View {
-    var disc : Discussion
+struct DiscDetail: View {
+    var dis : Discussion
     
-    @State var active = false
-    
+    init(dis : Discussion){
+        self.dis = dis
+    }
     var body: some View {
         VStack{
-            NavigationLink(destination: DiscDetail(dis: disc), isActive: $active){EmptyView()}
-            
             HStack{
-                Text(disc.author)
+                Text(dis.author)
                 Spacer()
                 Button(action: {}){
                     Text("...")
                 }
             }
-            Text(disc.titre).font(.title)
+            Text(dis.titre).font(.title)
             HStack{
                 Button(action: {}){
                     Image(systemName: "plus")
                 }
-                Text("\(disc.note)")
+                Text("\(dis.note)")
                 Button(action: {}){
                     Image(systemName: "minus")
                 }
@@ -38,16 +37,13 @@ struct DisPreview: View {
         .padding()
         .foregroundColor(.white)
         .background(Color.orange)
-        .onTapGesture {
-            self.active = true
-        }
+        .padding()
         
     }
 }
 
-
-struct DisPreview_Previews: PreviewProvider {
+struct DiscDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        DiscDetail(dis: Discussion(titre: "Titre", contenu: "Content", note: 1, auth: "Moi"))
     }
 }
