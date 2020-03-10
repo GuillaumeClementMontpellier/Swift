@@ -14,6 +14,7 @@ struct DiscDetail: View {
     
     @State var commentaire : String = ""
     
+    
     @ObservedObject var reponses : ReponseSet
     
     init(dis : Discussion){
@@ -23,7 +24,7 @@ struct DiscDetail: View {
         
         let reps : [Reponse] = [
             Reponse(contenu: "Voila 1 commentaire", note: 10, auth: "Pinoou"),
-            Reponse(contenu: "Voila un second", note: -10, auth: "Pinoou")
+            Reponse(contenu: "Voila un autre", note: -10, auth: "Pinoou")
         ]
         
         self.reponses = ReponseSet(rep : reps)
@@ -46,74 +47,81 @@ struct DiscDetail: View {
     }
     
     var body: some View {
-        VStack{
+        GeometryReader { metrics in
             VStack{
-                //Discussion
-                HStack{
-                    Text(dis.author)
-                    
-                    Spacer()
-                    
+                VStack{
+                    //Discussion
                     HStack{
-                        Button(action: self.plus){
-                            Image(systemName: "plus")
+                        Text(self.dis.author)
+                        Spacer()
+                        HStack{
+                            Button(action: self.plus){
+                                Image(systemName: "plus")
+                                .imageScale(.large)
+                            }
+                            Text("\(self.dis.note)")
+                            Button(action: self.minus){
+                                Image(systemName: "minus")
+                                .imageScale(.large)
+                            }
+                        }.buttonStyle(BorderlessButtonStyle())
+                        
+                        Spacer()
+                        
+                        Button(action: self.heart){
+                            Image(systemName: "heart")
+                            .imageScale(.large)
+                        }.font(.headline)
+                        Button(action: self.flag){
+                            Image(systemName: "flag")
+                            .imageScale(.large)
                         }
-                        Text("\(dis.note)")
-                        Button(action: self.minus){
-                            Image(systemName: "minus")
-                        }
-                    }.buttonStyle(BorderlessButtonStyle())
-                    
-                    Spacer()
-                    
-                    Button(action: self.heart){
-                        Image(systemName: "heart")
-                    }.font(.headline)
-                    Button(action: self.flag){
-                        Image(systemName: "flag")
                     }
+                    
+                    Divider()
+                    Text(self.dis.titre)
+                        .font(.title)
+                    Divider()
+                    ScrollView{
+                        Text(self.dis.contenu)
+                    }.frame(maxHeight: metrics.size.height * 0.4)
                 }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.orange)
+                .cornerRadius(20)
+                .padding()
                 
-                Divider()
-                Text(dis.titre)
-                    .font(.title)
-                Divider()
-                Text(dis.contenu)
-                    .lineLimit(nil)
+                // Champ de reponses
                 
-                
+                ScrollView {
+                    HStack{
+                        Image(systemName: "person")
+                        .imageScale(.large)
+                        
+                        VStack(alignment: .leading){
+                            Text("Answer")
+                            TextView(text: self.$commentaire)
+                                .frame(height: 100)
+                                .cornerRadius(10)
+                        }
+                        
+                    }.padding()
+                    
+                    // Liste des Reponses
+                    
+                    RepList(reponses: self.reponses)
+                }
             }
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.orange)
-            .padding()
-            
-            // Champ de reponses
-            
-            HStack(alignment: .center){
-                Image(systemName: "person").font(.largeTitle)
-                
-                VStack(alignment: .leading){
-                    Text("Answer")
-                    TextView(text: $commentaire)
-                        .frame(height: 150)
-                        .cornerRadius(10)
-                }
-                
-            }.padding()
-            
-            
-            // Liste des Reponses
-            
-            RepList(reponses: self.reponses)
-            
-        }
+        }//.modifier(AdaptsToKeyboard())
     }
+    
+    
 }
 
 
 struct DiscDetail_Previews: PreviewProvider {
     static var previews: some View {
-        DiscDetail(dis: Discussion(titre: "Titre", contenu: "Content Content Content", note: 1, auth: "Moi"))
+        DiscDetail(dis: Discussion(titre: "Titre", contenu: "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Visible Invisible", note: 1, auth: "Moi"))
     }
 }

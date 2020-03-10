@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7D8AED42417CC8200951058 /* AdaptKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8AED32417CC8200951058 /* AdaptKeyboard.swift */; };
+		B7D8AED62417DEDD00951058 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8AED52417DEDD00951058 /* MenuView.swift */; };
 		C729EB53240D3977002CC391 /* DiscDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C729EB52240D3977002CC391 /* DiscDetail.swift */; };
 		C729EB57240D432F002CC391 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C729EB56240D432F002CC391 /* TextView.swift */; };
 		C74A7615240D4BB2007C171C /* Reponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A7614240D4BB2007C171C /* Reponse.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B7D8AED32417CC8200951058 /* AdaptKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptKeyboard.swift; sourceTree = "<group>"; };
+		B7D8AED52417DEDD00951058 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C729EB52240D3977002CC391 /* DiscDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscDetail.swift; sourceTree = "<group>"; };
 		C729EB56240D432F002CC391 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		C74A7614240D4BB2007C171C /* Reponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reponse.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				C7C123EB240CEA1A00918C87 /* Pub */,
 				C7C123F0240CEB8F00918C87 /* StartView.swift */,
 				C7C123F7240CFA2200918C87 /* HomeView.swift */,
+				B7D8AED52417DEDD00951058 /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 			children = (
 				C7C123FF240D0ADE00918C87 /* SearchBar.swift */,
 				C729EB56240D432F002CC391 /* TextView.swift */,
+				B7D8AED32417CC8200951058 /* AdaptKeyboard.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -409,6 +415,8 @@
 				C729EB53240D3977002CC391 /* DiscDetail.swift in Sources */,
 				C7C123F8240CFA2200918C87 /* HomeView.swift in Sources */,
 				C7C12405240D151300918C87 /* DiscussionSet.swift in Sources */,
+				B7D8AED62417DEDD00951058 /* MenuView.swift in Sources */,
+				B7D8AED42417CC8200951058 /* AdaptKeyboard.swift in Sources */,
 				C7C12403240D14DC00918C87 /* DisList.swift in Sources */,
 				C764BCC024094EB700B76936 /* AppDelegate.swift in Sources */,
 				C74A7619240D4CFB007C171C /* RepList.swift in Sources */,

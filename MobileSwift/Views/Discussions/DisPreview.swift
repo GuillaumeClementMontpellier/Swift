@@ -15,8 +15,6 @@ struct DisPreview: View {
     
     var body: some View {
         VStack{
-            NavigationLink(destination: DiscDetail(dis: disc), isActive: $active){EmptyView()}
-            
             HStack{
                 Text(disc.author)
                 Spacer()
@@ -28,16 +26,23 @@ struct DisPreview: View {
             HStack{
                 Button(action: {}){
                     Image(systemName: "plus")
+                    .imageScale(.large)
                 }
                 Text("\(disc.note)")
                 Button(action: {}){
                     Image(systemName: "minus")
+                    .imageScale(.large)
                 }
             }.buttonStyle(BorderlessButtonStyle())
+            
+            NavigationLink(destination: DiscDetail(dis: disc),
+                           isActive: $active){EmptyView()}
+            
         }
         .padding()
         .foregroundColor(.white)
         .background(Color.orange)
+        .cornerRadius(20)
         .onTapGesture {
             self.active = true
         }

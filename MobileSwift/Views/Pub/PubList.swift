@@ -12,14 +12,18 @@ struct PubList: View {
     @ObservedObject var pubs: PublicationSet
     
     var body: some View {
-        List(self.pubs.publications){pub in
-            PubPreview(pub: pub)
+        VStack{
+            ForEach(self.pubs.publications){pub in
+                PubPreview(pub: pub)
+                Divider()
+            }
+            Spacer()
         }
     }
 }
 
 struct PubList_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        ContentView()
     }
 }

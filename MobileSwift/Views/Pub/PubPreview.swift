@@ -15,8 +15,6 @@ struct PubPreview: View {
     
     var body: some View {
         VStack{
-            NavigationLink(destination: PubDetail(pub: pub), isActive: $active){EmptyView()}
-            
             HStack{
                 Text(pub.author)
                 
@@ -31,22 +29,27 @@ struct PubPreview: View {
             HStack{
                 Button(action: {}){
                     Image(systemName: "plus")
+                    .imageScale(.large)
                 }
                 Text("\(pub.note)")
                 Button(action: {}){
                     Image(systemName: "minus")
+                    .imageScale(.large)
                 }
             }.buttonStyle(BorderlessButtonStyle())
+            
+            NavigationLink(destination: PubDetail(pub: pub), isActive: $active){EmptyView()}
         }
         .padding()
         .foregroundColor(.white)
         .background(Color.blue)
+        .cornerRadius(20)
         .onTapGesture {
             self.active = true
         }
         
+        
     }
-    
 }
 
 

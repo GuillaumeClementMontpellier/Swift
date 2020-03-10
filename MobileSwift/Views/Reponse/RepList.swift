@@ -12,8 +12,12 @@ struct RepList: View {
     @ObservedObject var reponses: ReponseSet
     
     var body: some View {
-        List(self.reponses.reponses){rep in
-            Rep(rep: rep)
+        VStack{
+            ForEach(self.reponses.reponses){rep in
+                Rep(rep: rep)
+                Divider()
+            }
+            Spacer()
         }
     }
 }

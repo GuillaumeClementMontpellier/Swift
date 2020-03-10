@@ -23,7 +23,7 @@ struct Rep: View {
             
             Image(systemName: "person")
                 .padding()
-                .font(.largeTitle)
+                .imageScale(.large)
             
             VStack(alignment: .trailing){
                 Text(rep.contenu)
@@ -36,15 +36,19 @@ struct Rep: View {
                 Spacer()
                 
                 !active ?
-                    Text("Reply")
-                        .foregroundColor(.blue)
+                    Button(action: {
+                        withAnimation{
+                            self.active.toggle()
+                        }
+                    }){
+                        Text("Reply")
+                    }.foregroundColor(.blue)
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding(1)
                         .background(Color.blue)
-                        .cornerRadius(10)
-                        .onTapGesture(perform: {self.active = true})
+                        .cornerRadius(11)
                     : nil
                 
                 active ?
@@ -53,9 +57,8 @@ struct Rep: View {
                     : nil
                 
             }
-        }
+        }.padding(.trailing, 10)
     }
-    
 }
 
 struct Rep_Previews: PreviewProvider {

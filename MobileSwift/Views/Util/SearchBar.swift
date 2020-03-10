@@ -13,7 +13,8 @@ struct SearchBar : View {
     
     var body: some View {
         HStack {
-            Image(systemName: "magnifyingglass").foregroundColor(.secondary)
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.secondary)
             
             TextField("Search", text: $searchText)
             
@@ -29,6 +30,6 @@ struct SearchBar : View {
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        ContentView()
     }
 }

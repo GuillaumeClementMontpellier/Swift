@@ -13,14 +13,19 @@ struct DisList: View {
     @ObservedObject var discs: DiscussionSet
     
     var body: some View {
-        List(self.discs.discussions){disc in
-            DisPreview(disc: disc)
+        VStack{
+            ForEach(self.discs.discussions){disc in
+                DisPreview(disc: disc)
+                Divider()
+            }
+            Spacer()
         }
+        
     }
 }
 
 struct DisList_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        ContentView()
     }
 }

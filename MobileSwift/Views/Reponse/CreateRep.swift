@@ -25,14 +25,14 @@ struct CreateRep: View {
             
             Button(action: self.post){
                 Text("Post")
-                .foregroundColor(.blue)
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-                .background(Color.white)
-                .cornerRadius(10)
-                .padding(1)
-                .background(Color.blue)
-                .cornerRadius(10)
             }
+            .foregroundColor(.blue)
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            .background(Color.white)
+            .cornerRadius(10)
+            .padding(1)
+            .background(Color.blue)
+            .cornerRadius(11)
         }
     }
 }
