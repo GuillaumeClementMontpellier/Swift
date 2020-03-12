@@ -14,8 +14,11 @@ struct Rep: View {
     
     @State var active = false
     
-    init(rep : Reponse){
+    var color: Color
+    
+    init(rep : Reponse, color : Color){
         self.rep = rep
+        self.color = color
     }
     
     var body : some View{
@@ -42,17 +45,17 @@ struct Rep: View {
                         }
                     }){
                         Text("Reply")
-                    }.foregroundColor(.blue)
+                    }.foregroundColor(self.color)
                         .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding(1)
-                        .background(Color.blue)
+                        .background(self.color)
                         .cornerRadius(11)
                     : nil
                 
                 active ?
-                    CreateRep(rep : self.rep)
+                    CreateRep(rep : self.rep, color: self.color)
                         .frame(height: 150)
                     : nil
                 

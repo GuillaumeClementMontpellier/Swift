@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B7D8AED42417CC8200951058 /* AdaptKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8AED32417CC8200951058 /* AdaptKeyboard.swift */; };
+		B717B01A241A7C430049922A /* CreatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B717B019241A7C430049922A /* CreatePost.swift */; };
 		B7D8AED62417DEDD00951058 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8AED52417DEDD00951058 /* MenuView.swift */; };
 		C729EB53240D3977002CC391 /* DiscDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C729EB52240D3977002CC391 /* DiscDetail.swift */; };
 		C729EB57240D432F002CC391 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C729EB56240D432F002CC391 /* TextView.swift */; };
@@ -58,7 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B7D8AED32417CC8200951058 /* AdaptKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptKeyboard.swift; sourceTree = "<group>"; };
+		B717B019241A7C430049922A /* CreatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePost.swift; sourceTree = "<group>"; };
 		B7D8AED52417DEDD00951058 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C729EB52240D3977002CC391 /* DiscDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscDetail.swift; sourceTree = "<group>"; };
 		C729EB56240D432F002CC391 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -122,11 +122,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C729EB54240D3A3D002CC391 /* Commentaire */ = {
+		C729EB54240D3A3D002CC391 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				C74A761C240D53E9007C171C /* CreateRep.swift */,
+				B717B019241A7C430049922A /* CreatePost.swift */,
 			);
-			path = Commentaire;
+			path = Post;
 			sourceTree = "<group>";
 		};
 		C729EB55240D3A45002CC391 /* Reponse */ = {
@@ -134,7 +136,6 @@
 			children = (
 				C74A7618240D4CFB007C171C /* RepList.swift */,
 				C74A761A240D4D07007C171C /* Rep.swift */,
-				C74A761C240D53E9007C171C /* CreateRep.swift */,
 			);
 			path = Reponse;
 			sourceTree = "<group>";
@@ -226,7 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				C729EB55240D3A45002CC391 /* Reponse */,
-				C729EB54240D3A3D002CC391 /* Commentaire */,
+				C729EB54240D3A3D002CC391 /* Post */,
 				C7C12401240D112B00918C87 /* Discussions */,
 				C7C123FE240D0ACE00918C87 /* Util */,
 				C7C123F4240CEF7700918C87 /* Auth */,
@@ -251,8 +252,8 @@
 		C7C123F4240CEF7700918C87 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				C7C123F2240CEF6900918C87 /* LoginView.swift */,
 				C7C123F5240CF93C00918C87 /* RegisterView.swift */,
+				C7C123F2240CEF6900918C87 /* LoginView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -262,7 +263,6 @@
 			children = (
 				C7C123FF240D0ADE00918C87 /* SearchBar.swift */,
 				C729EB56240D432F002CC391 /* TextView.swift */,
-				B7D8AED32417CC8200951058 /* AdaptKeyboard.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -416,7 +416,6 @@
 				C7C123F8240CFA2200918C87 /* HomeView.swift in Sources */,
 				C7C12405240D151300918C87 /* DiscussionSet.swift in Sources */,
 				B7D8AED62417DEDD00951058 /* MenuView.swift in Sources */,
-				B7D8AED42417CC8200951058 /* AdaptKeyboard.swift in Sources */,
 				C7C12403240D14DC00918C87 /* DisList.swift in Sources */,
 				C764BCC024094EB700B76936 /* AppDelegate.swift in Sources */,
 				C74A7619240D4CFB007C171C /* RepList.swift in Sources */,
@@ -426,6 +425,7 @@
 				C764BCC224094EB700B76936 /* SceneDelegate.swift in Sources */,
 				C764BCF8240964A500B76936 /* Pub.swift in Sources */,
 				C74A7617240D4BDA007C171C /* ReponseSet.swift in Sources */,
+				B717B01A241A7C430049922A /* CreatePost.swift in Sources */,
 				C764BCFC2409686200B76936 /* PublicationSet.swift in Sources */,
 				C764BCC424094EB700B76936 /* ContentView.swift in Sources */,
 				C74A7615240D4BB2007C171C /* Reponse.swift in Sources */,

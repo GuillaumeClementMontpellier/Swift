@@ -10,15 +10,29 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var showMenu: Bool = false
+    @Binding var showMenu: Bool
+    
+    @Binding var anonymous : Bool
+    
+    @Binding var color : Color
     
     @ObservedObject var pubSet: PublicationSet
     @ObservedObject var disSet: DiscussionSet
     
     @State var searchText = ""
-    @State var isPublication = true
     
-    init(){
+    @State var isPublication = true {
+        didSet{
+            color = isPublication ? Color.blue : Color.orange
+        }
+    }
+    
+    init(color : Binding<Color>, showMenu : Binding<Bool>, anon : Binding<Bool>){
+        
+        self._showMenu = showMenu
+        self._anonymous = anon
+        
+        self._color = color
         
         let pubs: [Publication] = [
             Publication(titre: "Pub1", contenu: "Lorem Ipsum", note: 500, auth: "Pinou"),
@@ -34,77 +48,71 @@ struct HomeView: View {
     }
     
     var body: some View {
-        let drag = DragGesture()
-            .onEnded{ drag in
-                if drag.translation.width < -100 {
-                    withAnimation {
-                        self.showMenu = false
+        
+        
+        ZStack{
+            VStack{
+                
+                // Selector
+                HStack{
+                    Button(action: {withAnimation {
+                        self.isPublication = true
+                        self.color =  Color.blue
+                        }}){
+                            Text("Publications")
                     }
-                }
-        }
-        return GeometryReader{ geometry in
-            ZStack{
-                VStack{
-                    SearchBar(searchText: self.$searchText)
+                    .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+                    .background(self.isPublication ? self.color : Color.white)
+                    .foregroundColor(self.isPublication ? Color.white : self.color)
+                    .border(self.color, width: 3)
                     
-                    HStack{
-                        Button(action: {withAnimation {
-                            self.isPublication = true
-                            }}){
-                                Text("Publications")
-                        }
-                        .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
-                        .background(self.isPublication ? Color.blue : Color.white)
-                        .foregroundColor(self.isPublication ? Color.white : Color.orange)
-                        .border(self.isPublication ? Color.blue: Color.orange, width: 3)
-                        
-                        Button(action:{withAnimation {
-                            self.isPublication = false
-                            }}){
-                                Text("Discussions")
-                        }
-                        .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
-                        .background(!self.isPublication ? Color.orange : Color.white)
-                        .foregroundColor(!self.isPublication ? Color.white : Color.blue)
-                        .border(self.isPublication ? Color.blue: Color.orange, width: 3)
-                        
+                    Button(action:{withAnimation {
+                        self.isPublication = false
+                        self.color = Color.orange
+                        }}){
+                            Text("Discussions")
                     }
-                    !self.isPublication ?
-                        DisList(discs: self.disSet)
-                            .padding()
-                        : nil
+                    .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+                    .background(!self.isPublication ? self.color : Color.white)
+                    .foregroundColor(!self.isPublication ? Color.white : self.color)
+                    .border(self.color, width: 3)
                     
-                    self.isPublication ?
-                        PubList(pubs: self.pubSet)
-                            .padding()
-                        : nil
-                    
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                .offset(x: self.showMenu ? geometry.size.width/2 : 0)
-                .disabled(self.showMenu ? true : false)
+                }.padding(.vertical)
+                
+                //Divider()
+                
+                SearchBar(searchText: self.$searchText)
+                
+                !self.isPublication ?
+                    DisList(discs: self.disSet, color: self.color)
+                        .padding()
+                    : nil
+                
+                self.isPublication ?
+                    PubList(pubs: self.pubSet, color : self.color, showMenu : self.$showMenu)
+                        .padding()
+                    : nil
                 
                 // End VStack
             }
             
-            if self.showMenu {
-                MenuView()
-                    .frame(width: geometry.size.width / 2)
-                    .transition(.move(edge: .leading))
-            }
             
+            // FloatButton
             VStack {
                 Spacer()
                 
                 HStack {
                     Spacer()
                     
-                    NavigationLink(destination: EmptyView()){
-                        
-                        Image(systemName: "plus")
-                            .imageScale(.large)
-                            .padding(EdgeInsets(top: 30, leading: 26, bottom: 30, trailing: 26))
-                    }.background(self.isPublication ? Color.blue: Color.orange)
+                    NavigationLink(destination:
+                        CreatePost(
+                            isPublication: self.$isPublication,
+                            color: self.$color, showMenu : self.$showMenu)){
+                                
+                                Image(systemName: "plus")
+                                    .imageScale(.large)
+                                    .padding(EdgeInsets(top: 30, leading: 26, bottom: 30, trailing: 26))
+                    }.background(self.color)
                         .foregroundColor(.white)
                         .cornerRadius(40)
                         .padding()
@@ -114,10 +122,10 @@ struct HomeView: View {
                                 y: 3)
                 }
             }
-            
-            // End ZStack
-        }.gesture(drag)
-            .navigationBarItems(
+            // End GeometryReader
+        }
+        .navigationBarTitle(Text("Home"), displayMode : .inline)
+        .navigationBarItems(
             leading: Button(action:{
                 withAnimation {
                     self.showMenu.toggle()
@@ -126,17 +134,15 @@ struct HomeView: View {
             ){
                 Image(systemName: "line.horizontal.3")
                     .imageScale(.large)
-                    .foregroundColor(self.isPublication ? .blue : .orange)
+                    .foregroundColor(self.color)
             },
             trailing: Button(action:{}){
                 Image(systemName: "house")
                     .imageScale(.large)
-                    .foregroundColor(self.isPublication ? .blue : .orange)
+                    .foregroundColor(self.color)
             }
         )
     }
-    
-    
 }
 
 struct HomeView_Previews: PreviewProvider {

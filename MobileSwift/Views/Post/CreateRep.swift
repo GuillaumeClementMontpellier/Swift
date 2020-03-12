@@ -14,6 +14,8 @@ struct CreateRep: View {
     
     @State var comment : String = ""
     
+    var color : Color
+    
     func post(){
         
     }
@@ -26,12 +28,12 @@ struct CreateRep: View {
             Button(action: self.post){
                 Text("Post")
             }
-            .foregroundColor(.blue)
+            .foregroundColor(self.color)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             .background(Color.white)
             .cornerRadius(10)
             .padding(1)
-            .background(Color.blue)
+            .background(self.color)
             .cornerRadius(11)
         }
     }
@@ -39,6 +41,6 @@ struct CreateRep: View {
 
 struct CreateRep_Previews: PreviewProvider {
     static var previews: some View {
-        CreateRep(rep: Reponse(contenu: "Filler", note: 2, auth: "Pas Moi"))
+        CreateRep(rep: Reponse(contenu: "Filler", note: 2, auth: "Pas Moi"), color: .red)
     }
 }

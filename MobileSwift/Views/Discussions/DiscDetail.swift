@@ -14,6 +14,7 @@ struct DiscDetail: View {
     
     @State var commentaire : String = ""
     
+    var color : Color = .orange
     
     @ObservedObject var reponses : ReponseSet
     
@@ -30,6 +31,10 @@ struct DiscDetail: View {
         self.reponses = ReponseSet(rep : reps)
     }
     
+    func post(){
+        
+    }
+    
     func heart(){
         
     }
@@ -42,10 +47,6 @@ struct DiscDetail: View {
         
     }
     
-    func minus(){
-        
-    }
-    
     var body: some View {
         GeometryReader { metrics in
             VStack{
@@ -54,41 +55,49 @@ struct DiscDetail: View {
                     HStack{
                         Text(self.dis.author)
                         Spacer()
-                        HStack{
-                            Button(action: self.plus){
-                                Image(systemName: "plus")
-                                .imageScale(.large)
-                            }
-                            Text("\(self.dis.note)")
-                            Button(action: self.minus){
-                                Image(systemName: "minus")
-                                .imageScale(.large)
-                            }
-                        }.buttonStyle(BorderlessButtonStyle())
                         
                         Spacer()
                         
                         Button(action: self.heart){
                             Image(systemName: "heart")
-                            .imageScale(.large)
-                        }.font(.headline)
+                                .imageScale(.large)
+                        }
                         Button(action: self.flag){
                             Image(systemName: "flag")
-                            .imageScale(.large)
+                                .imageScale(.large)
                         }
                     }
                     
                     Divider()
-                    Text(self.dis.titre)
-                        .font(.title)
+                    HStack{
+                        Text("\(self.dis.note)")
+                        
+                        // Sid eja plus, il disparait
+                        Button(action: self.plus){
+                            Image(systemName: "plus")
+                                .imageScale(.large)
+                        }
+                        
+                        Divider()
+                            .frame(height: 50)
+                        
+                        Text(self.dis.titre)
+                            .font(.title)
+                        
+                        Spacer()
+                    }.buttonStyle(BorderlessButtonStyle())
+                    
+                    
                     Divider()
+                    
+                    
                     ScrollView{
                         Text(self.dis.contenu)
                     }.frame(maxHeight: metrics.size.height * 0.4)
                 }
                 .padding()
                 .foregroundColor(.white)
-                .background(Color.orange)
+                .background(self.color)
                 .cornerRadius(20)
                 .padding()
                 
@@ -97,23 +106,43 @@ struct DiscDetail: View {
                 ScrollView {
                     HStack{
                         Image(systemName: "person")
-                        .imageScale(.large)
+                            .imageScale(.large)
+                            .padding()
                         
                         VStack(alignment: .leading){
                             Text("Answer")
+                            
                             TextView(text: self.$commentaire)
                                 .frame(height: 100)
                                 .cornerRadius(10)
-                        }
+                            
+                            HStack{
+                                
+                                Spacer()
+                                
+                                Button(action: self.post){
+                                    Text("Post")
+                                }
+                                .foregroundColor(self.color)
+                                .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(1)
+                                .background(self.color)
+                                .cornerRadius(11)
+                                
+                            }
+                            
+                        }.padding()
                         
-                    }.padding()
+                    }
                     
                     // Liste des Reponses
                     
-                    RepList(reponses: self.reponses)
+                    RepList(reponses: self.reponses, color: .orange)
                 }
             }
-        }//.modifier(AdaptsToKeyboard())
+        }
     }
     
     

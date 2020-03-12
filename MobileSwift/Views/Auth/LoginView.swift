@@ -24,6 +24,9 @@ struct LoginView: View {
     var body: some View {
         VStack{
             
+            Text("Log in")
+                .font(.largeTitle)
+            
             error ?
                 Text("Wrong Username or Password")
                     .padding()
@@ -31,6 +34,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .cornerRadius(5)
                 : nil
+            
             
             HStack{
                 Text("Username")
@@ -45,13 +49,11 @@ struct LoginView: View {
             Button(action:self.login){
                 Text("Sign in")
             }
-            .font(.title)
-            .padding(5)
+            .font(.headline)
+            .padding()
             .background(Color.blue)
             .foregroundColor(.white)
-            .cornerRadius(5)
-            
-            //Text(password)
+            .cornerRadius(20)
             
         }
     }

@@ -24,7 +24,7 @@ struct StartView: View {
             Spacer()
             Spacer()
             
-            NavigationLink(destination: LoginView()){
+            NavigationLink(destination: RegisterView()){
                 Text("Create an Account")
             }
             .font(.largeTitle)
@@ -39,7 +39,7 @@ struct StartView: View {
             
             Spacer()
             
-            NavigationLink(destination: StartView()){
+            NavigationLink(destination: LoginView()){
                 Text("Login")
             }
             .foregroundColor(.blue)

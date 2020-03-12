@@ -11,10 +11,12 @@ import SwiftUI
 struct RepList: View {
     @ObservedObject var reponses: ReponseSet
     
+    var color : Color
+    
     var body: some View {
         VStack{
             ForEach(self.reponses.reponses){rep in
-                Rep(rep: rep)
+                Rep(rep: rep, color: self.color)
                 Divider()
             }
             Spacer()

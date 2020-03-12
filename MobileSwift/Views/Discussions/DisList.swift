@@ -10,12 +10,15 @@
 import SwiftUI
 
 struct DisList: View {
+    
     @ObservedObject var discs: DiscussionSet
     
+    var color : Color
+    
     var body: some View {
-        VStack{
+        ScrollView{
             ForEach(self.discs.discussions){disc in
-                DisPreview(disc: disc)
+                DisPreview(disc: disc, color : self.color)
                 Divider()
             }
             Spacer()

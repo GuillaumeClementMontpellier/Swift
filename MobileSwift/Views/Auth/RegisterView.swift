@@ -21,6 +21,10 @@ struct RegisterView: View {
     
     var body: some View {
         VStack{
+            
+            Text("Create an Account")
+                .font(.largeTitle)
+            
             error ?
                 Text("Error")
                     .padding()
@@ -42,11 +46,11 @@ struct RegisterView: View {
             Button(action:self.register){
                 Text("Register")
             }
-            .font(.title)
-            .padding(5)
+            .font(.headline)
+            .padding()
             .background(Color.blue)
             .foregroundColor(.white)
-            .cornerRadius(5)
+            .cornerRadius(10)
             
         }
     }

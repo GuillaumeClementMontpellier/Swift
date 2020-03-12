@@ -9,12 +9,17 @@
 import SwiftUI
 
 struct PubList: View {
+    
     @ObservedObject var pubs: PublicationSet
     
+    var color : Color
+    
+    @Binding var showMenu : Bool
+    
     var body: some View {
-        VStack{
+        ScrollView{
             ForEach(self.pubs.publications){pub in
-                PubPreview(pub: pub)
+                PubPreview(pub: pub, color : self.color, showMenu: self.$showMenu)
                 Divider()
             }
             Spacer()

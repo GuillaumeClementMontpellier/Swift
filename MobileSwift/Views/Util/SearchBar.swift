@@ -18,13 +18,12 @@ struct SearchBar : View {
             
             TextField("Search", text: $searchText)
             
-            //Button(action: {self.searchText = ""}) {
-            //    Image(systemName: "xmark.circle.fill")
-            //        .foregroundColor(.secondary)
-            //        .opacity(Double(searchText == "" ? 0 : 1))
-            //}
             
-        }.padding(.horizontal)
+        }.padding(10)
+            .background(Color(red: 0.9, green: 0.9, blue: 0.9))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            .padding(.top, 5)
     }
 }
 

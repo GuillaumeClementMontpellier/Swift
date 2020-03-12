@@ -11,42 +11,53 @@ import SwiftUI
 struct DisPreview: View {
     var disc : Discussion
     
+    var color : Color
+    
     @State var active = false
     
-    var body: some View {
-        VStack{
-            HStack{
-                Text(disc.author)
-                Spacer()
-                Button(action: {}){
-                    Text("...")
-                }
-            }
-            Text(disc.titre).font(.title)
-            HStack{
-                Button(action: {}){
-                    Image(systemName: "plus")
-                    .imageScale(.large)
-                }
-                Text("\(disc.note)")
-                Button(action: {}){
-                    Image(systemName: "minus")
-                    .imageScale(.large)
-                }
-            }.buttonStyle(BorderlessButtonStyle())
-            
-            NavigationLink(destination: DiscDetail(dis: disc),
-                           isActive: $active){EmptyView()}
-            
-        }
-        .padding()
-        .foregroundColor(.white)
-        .background(Color.orange)
-        .cornerRadius(20)
-        .onTapGesture {
-            self.active = true
-        }
+    func plus(){
         
+    }
+    
+    func dot(){
+        
+    }
+    
+    var body: some View {
+        NavigationLink(destination: DiscDetail(dis: disc)){
+            VStack{
+                
+                HStack{
+                    Text(disc.author)
+                    Spacer()
+                    Button(action: {}){
+                        Text("...")
+                    }
+                }
+                
+                Divider()
+                HStack{
+                    Text("\(disc.note)")
+                    Button(action: {}){
+                        Image(systemName: "plus")
+                            .imageScale(.large)
+                    }
+                    
+                    Divider()
+                    
+                    Text(disc.titre).font(.title)
+                    
+                    Spacer()
+                    
+                }
+                
+                
+            }
+            .padding()
+            .foregroundColor(.white)
+            .background(self.color)
+            .cornerRadius(20)
+        }
     }
 }
 

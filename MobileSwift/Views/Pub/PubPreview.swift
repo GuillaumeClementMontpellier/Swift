@@ -11,44 +11,56 @@ import SwiftUI
 struct PubPreview: View {
     var pub : Publication
     
-    @State var active = false
+    var color : Color
+    
+    @Binding var showMenu : Bool
+    
+    func plus(){
+        
+    }
+    
+    func dot(){
+        
+    }
     
     var body: some View {
-        VStack{
-            HStack{
-                Text(pub.author)
+        NavigationLink(destination: PubDetail(pub: pub, showMenu: self.$showMenu)){
+            
+            VStack{
+                HStack{
+                    Text(pub.author)
+                    
+                    Spacer()
+                    
+                    Button(action: self.dot){
+                        Text("...")
+                        // Menu deroulant : Signaler ou s'abonner
+                    }
+                }
                 
-                Spacer()
+                Divider()
                 
-                Button(action: {}){
-                    Text("...")
-                    // Menu deroulant : Signaler ou s'abonner
+                HStack{
+                    
+                    Text("\(pub.note)")
+                    Button(action: self.plus){
+                        Image(systemName: "plus")
+                            .imageScale(.large)
+                    }
+                    
+                    Divider()
+                    
+                    Text(pub.titre).font(.title)
+                    
+                    Spacer()
+                    
                 }
             }
-            Text(pub.titre).font(.title)
-            HStack{
-                Button(action: {}){
-                    Image(systemName: "plus")
-                    .imageScale(.large)
-                }
-                Text("\(pub.note)")
-                Button(action: {}){
-                    Image(systemName: "minus")
-                    .imageScale(.large)
-                }
-            }.buttonStyle(BorderlessButtonStyle())
-            
-            NavigationLink(destination: PubDetail(pub: pub), isActive: $active){EmptyView()}
         }
         .padding()
         .foregroundColor(.white)
-        .background(Color.blue)
+        .background(self.color)
         .cornerRadius(20)
-        .onTapGesture {
-            self.active = true
-        }
-        
-        
     }
 }
 
