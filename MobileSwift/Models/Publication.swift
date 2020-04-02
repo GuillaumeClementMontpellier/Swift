@@ -8,16 +8,17 @@
 
 import Foundation
 
-class Publication: Identifiable{
-    var titre: String
-    var contenu: String
-    var note: Int
-    var author : String
+class Publication: Identifiable, Codable {
     
-    init(titre: String, contenu: String, note: Int, auth: String) {
-        self.titre = titre
-        self.contenu = contenu
-        self.note = note
-        self.author = auth
+    let id = UUID()
+    let publicationAuthor = UUID()
+    var publicationTitle: String
+    var publicationDescription: String
+    
+    
+    init(titre: String, contenu: String) {
+        self.publicationTitle = titre
+        self.publicationDescription = contenu
     }
+    
 }

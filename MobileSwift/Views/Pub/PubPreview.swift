@@ -23,12 +23,19 @@ struct PubPreview: View {
         
     }
     
+    init(pub: Publication, color : Color, showMenu : Binding<Bool>) {
+        self.pub = pub
+        self.color = color
+        self._showMenu = showMenu
+        User.createUser(id: pub.publicationAuthor)
+    }
+    
     var body: some View {
         NavigationLink(destination: PubDetail(pub: pub, showMenu: self.$showMenu)){
             
             VStack{
                 HStack{
-                    Text(pub.author)
+                    Text(User.getUser(id: pub.publicationAuthor).userPseudo)
                     
                     Spacer()
                     
@@ -42,7 +49,7 @@ struct PubPreview: View {
                 
                 HStack{
                     
-                    Text("\(pub.note)")
+                    Text("\(/*pub.note*/ 521)")
                     Button(action: self.plus){
                         Image(systemName: "plus")
                             .imageScale(.large)
@@ -50,7 +57,7 @@ struct PubPreview: View {
                     
                     Divider()
                     
-                    Text(pub.titre).font(.title)
+                    Text(pub.publicationTitle).font(.title)
                     
                     Spacer()
                     

@@ -61,7 +61,7 @@ struct PubDetail: View {
                 VStack{
                     //Discussion
                     HStack{
-                        Text(self.pub.author)
+                        Text(/*self.pub.author*/ "pinou")
                         Spacer()
                         
                         Button(action: self.heart){
@@ -76,7 +76,7 @@ struct PubDetail: View {
                     
                     Divider()
                     HStack{
-                        Text("\(self.pub.note)")
+                        Text("\(/*self.pub.note*/ 523)")
                         
                         Button(action: self.plus){
                             Image(systemName: "plus")
@@ -86,14 +86,14 @@ struct PubDetail: View {
                         Divider()
                             .frame(height: 50)
                         
-                        Text(self.pub.titre)
+                        Text(self.pub.publicationTitle)
                             .font(.title)
                         
                         Spacer()
                     }
                     Divider()
                     ScrollView{
-                        Text(self.pub.contenu)
+                        Text(self.pub.publicationDescription)
                     }.frame(maxHeight: metrics.size.height * 0.4)
                 }
                 .padding()

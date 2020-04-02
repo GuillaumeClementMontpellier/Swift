@@ -35,9 +35,11 @@ struct HomeView: View {
         self._color = color
         
         let pubs: [Publication] = [
-            Publication(titre: "Pub1", contenu: "Lorem Ipsum", note: 500, auth: "Pinou"),
-            Publication(titre: "Pub2", contenu: "Lorem Ipsum", note: 200, auth: "Pinou")
+            Publication(titre: "Pub1", contenu: "Lorem Ipsum"),
+            Publication(titre: "Pub2", contenu: "Lorem Ipsum")
         ]
+        
+        //let pubs: [Publication] = []
         self.pubSet = PublicationSet(pubs: pubs)
         
         let discs: [Discussion] = [
@@ -45,6 +47,9 @@ struct HomeView: View {
             Discussion(titre: "D2", contenu: "Lorem Ipsum", note: 20, auth: "Pinou")
         ]
         self.disSet = DiscussionSet(disc: discs)
+        
+        self.pubSet.getPublications()
+
     }
     
     var body: some View {
@@ -65,6 +70,7 @@ struct HomeView: View {
                     .background(self.isPublication ? self.color : Color.white)
                     .foregroundColor(self.isPublication ? Color.white : self.color)
                     .border(self.color, width: 3)
+                    
                     
                     Button(action:{withAnimation {
                         self.isPublication = false
