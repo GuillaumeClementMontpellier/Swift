@@ -24,8 +24,8 @@ struct DiscDetail: View {
         // Fetch les reponses de la discussion
         
         let reps : [Reponse] = [
-            Reponse(contenu: "Voila 1 commentaire", note: 10, auth: "Pinoou"),
-            Reponse(contenu: "Voila un autre", note: -10, auth: "Pinoou")
+            Reponse(id: "", publication: "l", description: "Voila 1 commentaire", auth: "Pinoou"),
+            Reponse(id: "", publication: "l", description: "Voila 1 autre", auth: "Pinoou")
         ]
         
         self.reponses = ReponseSet(rep : reps)

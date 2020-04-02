@@ -8,14 +8,17 @@
 
 import Foundation
 
-class Reponse: Identifiable{
-    var contenu: String
-    var note: Int
-    var author : String
+class Reponse: Identifiable, Codable {
     
-    init(contenu: String, note: Int, auth: String) {
-        self.contenu = contenu
-        self.note = note
-        self.author = auth
+    var _id: String
+    var idParent: String
+    var commentAuthor: String
+    var commentDescription: String
+    
+    init(id: String, publication: String, description: String, auth: String) {
+        self._id = id
+        self.idParent = publication
+        self.commentAuthor = auth
+        self.commentDescription = description
     }
 }

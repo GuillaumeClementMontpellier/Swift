@@ -26,7 +26,8 @@ class PublicationSet: ObservableObject, Identifiable {
         URLSession.shared.dataTask(with: url) { (data, _, _) in
             if let data = data {
                 print(data)
-                if let publications = try? JSONDecoder().decode([Publication].self, from: data) {
+                do {
+                    let publications = try JSONDecoder().decode([Publication].self, from: data)
                     DispatchQueue.main.async {
                         for pub in publications {
                             self.addPublication(p: pub)
@@ -34,13 +35,15 @@ class PublicationSet: ObservableObject, Identifiable {
                         }
                     }
                     return
-                } else {
-                    print("Erreur")
+                } catch {
+                    print(error)
                 }
+                
+            } else {
+                print("Il n'y a pas de publications !")
             }
-            print("Il n'y a pas de publications !")
+            
         }.resume()
     }
-
 }
 

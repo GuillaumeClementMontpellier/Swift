@@ -35,8 +35,7 @@ struct HomeView: View {
         self._color = color
         
         let pubs: [Publication] = [
-            Publication(titre: "Pub1", contenu: "Lorem Ipsum"),
-            Publication(titre: "Pub2", contenu: "Lorem Ipsum")
+            Publication(id: "", auteur: "Pinou", titre: "Pub1", contenu: "Lorem Ipsum")
         ]
         
         //let pubs: [Publication] = []

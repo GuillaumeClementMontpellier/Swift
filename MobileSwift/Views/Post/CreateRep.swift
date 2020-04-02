@@ -41,6 +41,6 @@ struct CreateRep: View {
 
 struct CreateRep_Previews: PreviewProvider {
     static var previews: some View {
-        CreateRep(rep: Reponse(contenu: "Filler", note: 2, auth: "Pas Moi"), color: .red)
+        CreateRep(rep: Reponse(id: "", publication: "Filler", description: "lorem ipsum", auth: "Pas Moi"), color: .red)
     }
 }

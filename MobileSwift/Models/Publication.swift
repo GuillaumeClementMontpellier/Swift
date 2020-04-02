@@ -10,13 +10,15 @@ import Foundation
 
 class Publication: Identifiable, Codable {
     
-    let id = UUID()
-    let publicationAuthor = UUID()
+    let _id: String
+    let publicationAuthor: String
     var publicationTitle: String
     var publicationDescription: String
     
     
-    init(titre: String, contenu: String) {
+    init(id: String, auteur: String, titre: String, contenu: String) {
+        self._id = id
+        self.publicationAuthor = auteur
         self.publicationTitle = titre
         self.publicationDescription = contenu
     }

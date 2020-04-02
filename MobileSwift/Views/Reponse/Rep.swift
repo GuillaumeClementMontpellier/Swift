@@ -29,7 +29,7 @@ struct Rep: View {
                 .imageScale(.large)
             
             VStack(alignment: .trailing){
-                Text(rep.contenu)
+                Text(rep.commentDescription)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(5)
                     .background(Color.white)
